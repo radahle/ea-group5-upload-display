@@ -51,7 +51,7 @@ public class DetermineExtention {
 	}
 
 	private String displayImg(){
-		return " <img src=\"https://tek.vgc.no/2348/2348082/tb8d0cbc.956x538.jpg\" alt=\"Smiley face\" height=\"42\" width=\"42\"> ";
+		return " <img src=\"https://tek.vgc.no/2348/2348082/tb8d0cbc.956x538.jpg\" alt=\"Smiley face\" height=\"200\" width=\"200\"> ";
 	}
 
 	private String displayOther(){
