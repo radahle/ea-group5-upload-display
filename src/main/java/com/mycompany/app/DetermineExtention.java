@@ -51,7 +51,7 @@ public class DetermineExtention {
 	}
 
 	private String displayImg(){
-		return "Will display an image";
+		return " <img src="smiley.gif" alt="Smiley face" height="42" width="42"> ";
 	}
 
 	private String displayOther(){
