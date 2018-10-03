@@ -13,11 +13,11 @@ public class DetermineExtention {
     }
 
     public String displayData(String filename){
-    	// Txt
+    	// txt
     	if(getExtensionByString(filename).equals("txt")){
     		System.out.println(filename + " : Is recognized as txt extention");	
     		return displayTxt();
-    	// Code
+    	// code
     	}else if(getExtensionByString(filename).equals("js") || 
     			 getExtensionByString(filename).equals("cs") || 
     			 getExtensionByString(filename).equals("py")){
@@ -27,11 +27,11 @@ public class DetermineExtention {
 		}else if(getExtensionByString(filename).equals("pdf")){
 			System.out.println(filename + " : Is recognized as a pdf extention");
 			return displayPdf();
-		// Png / jpeg
+		// jpg / jpeg
 		}else if(getExtensionByString(filename).equals("jpg") || getExtensionByString(filename).equals("jpeg")){
 			System.out.println(filename + " : Is recognized as a img extention");
 			return displayImg();
-		// Other
+		// other
 		}else{
 			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
 			return displayOther();
@@ -43,7 +43,7 @@ public class DetermineExtention {
 	}
 
 	private String displayCode(){
-		return "<code><pre> String code = \"Will display code\"; </pre></code>";
+		return "<pre><code> String code = \"Will display code\"; </code></pre>";
 	}
 
 	private String displayPdf(){
