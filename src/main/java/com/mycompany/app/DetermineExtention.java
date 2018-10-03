@@ -28,7 +28,7 @@ public class DetermineExtention {
 			System.out.println(filename + " : Is recognized as a pdf extention");
 			return displayPdf();
 		// Png / jpeg
-		}else if(getExtensionByString(filename).equals("png") || getExtensionByString(filename).equals("jpeg")){
+		}else if(getExtensionByString(filename).equals("jpg") || getExtensionByString(filename).equals("jpeg")){
 			System.out.println(filename + " : Is recognized as a img extention");
 			return displayImg();
 		// Other
@@ -51,7 +51,7 @@ public class DetermineExtention {
 	}
 
 	private String displayImg(){
-		return " <img src="smiley.gif" alt="Smiley face" height="42" width="42"> ";
+		return " <img src=\"https://tek.vgc.no/2348/2348082/tb8d0cbc.956x538.jpg\" alt=\"Smiley face\" height=\"42\" width=\"42\"> ";
 	}
 
 	private String displayOther(){

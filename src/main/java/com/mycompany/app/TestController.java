@@ -21,7 +21,7 @@ public class TestController{
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET)
     public String test(){
-    	return extention.displayData("test.py");
+    	return extention.displayData("test.jpg");
     }
 
 }
