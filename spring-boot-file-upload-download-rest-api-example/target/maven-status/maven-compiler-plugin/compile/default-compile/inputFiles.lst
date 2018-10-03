@@ -1,0 +1,7 @@
+/home/noroff-experis-6/Desktop/Noroff/Week4 - Java Technologies for Web Application 2/WeekTask2/spring-boot-file-upload-download-rest-api-example/src/main/java/com/example/filedemo/FileDemoApplication.java
+/home/noroff-experis-6/Desktop/Noroff/Week4 - Java Technologies for Web Application 2/WeekTask2/spring-boot-file-upload-download-rest-api-example/src/main/java/com/example/filedemo/exception/FileStorageException.java
+/home/noroff-experis-6/Desktop/Noroff/Week4 - Java Technologies for Web Application 2/WeekTask2/spring-boot-file-upload-download-rest-api-example/src/main/java/com/example/filedemo/exception/MyFileNotFoundException.java
+/home/noroff-experis-6/Desktop/Noroff/Week4 - Java Technologies for Web Application 2/WeekTask2/spring-boot-file-upload-download-rest-api-example/src/main/java/com/example/filedemo/service/FileStorageService.java
+/home/noroff-experis-6/Desktop/Noroff/Week4 - Java Technologies for Web Application 2/WeekTask2/spring-boot-file-upload-download-rest-api-example/src/main/java/com/example/filedemo/payload/UploadFileResponse.java
+/home/noroff-experis-6/Desktop/Noroff/Week4 - Java Technologies for Web Application 2/WeekTask2/spring-boot-file-upload-download-rest-api-example/src/main/java/com/example/filedemo/controller/FileController.java
+/home/noroff-experis-6/Desktop/Noroff/Week4 - Java Technologies for Web Application 2/WeekTask2/spring-boot-file-upload-download-rest-api-example/src/main/java/com/example/filedemo/property/FileStorageProperties.java
