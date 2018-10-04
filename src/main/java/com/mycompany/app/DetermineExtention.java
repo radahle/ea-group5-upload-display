@@ -53,11 +53,11 @@ public class DetermineExtention {
 	}
 
 	private String displayTxt(byte[] bytes){
-		return "<p>"+new String(bytes)+"</p>";
+		return "<pre><p>"+new String(bytes)+"</p></pre>";
 	}
 
 	private String displayCode(byte[] bytes){
-		return "<pre><code>"+new String(bytes)+"</code></pre>";
+		return "<pre class=\"prettyprint\"><code>"+new String(bytes)+"</code></pre>";
 	}
 
 	private String displayPdf(byte[] bytes){

@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 <head>
-	<style type="text/css">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<style type="text/css">
+
+	body{
+		margin: 0;
+	}
+
+	header{
+		background: url(https://www.cadtutor.net/download/raster/sky_02_source/sky-13.jpg) no-repeat center center fixed;
+		background-size: cover;
+
+		height: 20vh;
+		min-height: 20vh;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	h1{
+		color:white;
+		font-size: 300%;
+		text-transform: uppercase;
+		text-shadow: 4px 4px 20px #000;
+		text-align: center;
+		font-family: arial;
+	}
+
+	article{
+		width: 50%;
+		margin: 0 auto;
+		font-size: 18px;
+	}
+
  	pre code {
 	  background-color: #eee;
 	  border: 1px solid #999;
@@ -8,22 +41,31 @@
 	  padding: 20px;
 	}
 	iframe {
-		width: -webkit-fill-available; 
-		height: -webkit-fill-available;
+		width: 100%; 
+		height:800px;
 	}
 	img{
 		width: 50%;
 	}
-	</style>
+</style>
 </head>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-
+<header>
+	
 <div th:if="${message}">
 	<h1 th:utext="${fileName}"/></h1>
-    <p th:utext="${message}"/></p>
 </div>
+</header>
+<article>
+<p>Upload a new file:</p>
+<input type="button" onclick="location.href='/';" value="Back" />
+
+<div th:if="${message}">
+    <p th:utext="${message}"/></p>
+</div>    
+</article>    
 
 </body>
 </html>
