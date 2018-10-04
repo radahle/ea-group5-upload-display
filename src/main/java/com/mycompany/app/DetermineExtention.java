@@ -24,14 +24,14 @@ public class DetermineExtention {
     	// txt
     	if(extension.equals("txt")){
     		System.out.println(filename + " : Is recognized as txt extention");	
-    		return displayTxt();
+    		return displayTxt(bytes);
     	// code
     	}else if(extension.equals("js") || 
     			extension.equals("java") ||
     			 extension.equals("cs") || 
     			 extension.equals("py")){
     		System.out.println(filename + " : Is recognized as code extention");
-    		return displayCode();
+    		return displayCode(bytes);
 		// Pdf
 		}else if(extension.equals("pdf")){
 			System.out.println(filename + " : Is recognized as a pdf extention");
@@ -49,12 +49,12 @@ public class DetermineExtention {
 	    }
 	}
 
-	private String displayTxt(){
-		return "<p>\"/data \"</p>";
+	private String displayTxt(byte[] bytes){
+		return "<p>"+new String(bytes)+"</p>";
 	}
 
-	private String displayCode(){
-		return "<pre><code>\"/data\"</code></pre>";
+	private String displayCode(byte[] bytes){
+		return "<pre><code>"+new String(bytes)+"</code></pre>";
 	}
 
 	private String displayPdf(byte[] bytes){
