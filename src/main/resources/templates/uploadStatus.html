@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <head>
-	<script>
-    	function getImagePath(){
-     		return "/src/main/resources/temp/" + "$(message)";
-   		}
-   		document.onload = function(){
-       		document.getElementById('someImage').src=getImagePath();
-   		};
-	</script>
+	<style type="text/css">
+ 	pre code {
+	  background-color: #eee;
+	  border: 1px solid #999;
+	  display: block;
+	  padding: 20px;
+	}
+	iframe {
+		width: -webkit-fill-available; 
+		height: -webkit-fill-available;
+	}
+	img{
+		width: 50%;
+	}
+	</style>
 </head>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
@@ -17,8 +24,5 @@
 <div th:if="${message}">
     <h2 th:utext="${message}"/></h2>
 </div>
-<iframe src=""></iframe>
-
-
 </body>
 </html>

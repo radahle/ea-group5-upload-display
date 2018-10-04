@@ -30,7 +30,7 @@ public class DetermineExtention {
     			 getExtensionByString(filename).equals("cs") || 
     			 getExtensionByString(filename).equals("py")){
     		System.out.println(filename + " : Is recognized as code extention");
-    		return displayCode();
+    		return displayCode(bytes);
 		// Pdf
 		}else if(getExtensionByString(filename).equals("pdf")){
 			System.out.println(filename + " : Is recognized as a pdf extention");
@@ -50,8 +50,8 @@ public class DetermineExtention {
 		return "<p>"+new String(bytes)+"</p>";
 	}
 
-	private String displayCode(){
-		return "<pre><code>\"/data\"</code></pre>";
+	private String displayCode(byte[] bytes){
+		return "<pre><code>"+new String(bytes)+"</code></pre>";
 	}
 
 	private String displayPdf(byte[] bytes){
