@@ -20,12 +20,8 @@ import java.nio.file.Paths;
 public class UploadController {
 
     private DetermineExtention extention = new DetermineExtention();
-    String fname = "";
-    byte[] bytes;
-    //String filename = "";
 
-    //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "src/main/resources/temp/";
+    byte[] bytes;
 
     @GetMapping("/")
     public String index() {
@@ -35,23 +31,13 @@ public class UploadController {
     @PostMapping("/upload") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
-
-
-       // filename = file.toString();
-
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
             return "redirect:uploadStatus";
         }
 
         try {
-
-            //Get the file and save it somewhere
             bytes = file.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-            Files.write(path, bytes);
-            fname = file.getOriginalFilename();
-
             redirectAttributes.addFlashAttribute("message", extention.displayData(file.getOriginalFilename()));
 
         } catch (IOException e) {
@@ -75,9 +61,4 @@ public class UploadController {
         ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers, HttpStatus.OK);
         return responseEntity;
     }
-
-    /*public String getFileName(){
-        return filename;
-    }*/
-
 }
