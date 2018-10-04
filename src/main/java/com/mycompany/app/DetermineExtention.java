@@ -47,7 +47,7 @@ public class DetermineExtention {
 	}
 
 	private String displayTxt(byte[] bytes){
-		return "<p>"+new String(bytes)+"</p>";
+		return "<pre><p>"+new String(bytes)+"</p></pre>";
 	}
 
 	private String displayCode(byte[] bytes){
