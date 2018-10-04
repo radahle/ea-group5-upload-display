@@ -47,11 +47,11 @@ public class DetermineExtention {
 	}
 
 	private String displayTxt(){
-		return "This is text";
+		return "<p>\"/data \"</p>";
 	}
 
 	private String displayCode(){
-		return "<pre><code> String code = \"Will display code\"; </code></pre>";
+		return "<pre><code>\"/data\"</code></pre>";
 	}
 
 	private String displayPdf(byte[] bytes){
