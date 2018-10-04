@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<head>
+	<script>
+    	function getImagePath(){
+     		return "/src/main/resources/temp/" + "$(message)";
+   		}
+   		document.onload = function(){
+       		document.getElementById('someImage').src=getImagePath();
+   		};
+	</script>
+</head>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
@@ -7,6 +17,8 @@
 <div th:if="${message}">
     <h2 th:utext="${message}"/></h2>
 </div>
+<iframe src=""></iframe>
+
 
 </body>
 </html>

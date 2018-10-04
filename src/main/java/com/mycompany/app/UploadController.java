@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.*;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,12 +20,12 @@ import java.nio.file.Paths;
 public class UploadController {
 
     private DetermineExtention extention = new DetermineExtention();
-
+    String fname = "";
+    byte[] bytes;
     //String filename = "";
 
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "src/main/resources/temp/";
-    private static String fileName = "";
 
     @GetMapping("/")
     public String index() {
@@ -43,14 +47,12 @@ public class UploadController {
         try {
 
             //Get the file and save it somewhere
-            byte[] bytes = file.getBytes();
+            bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
-            fileName = file.getOriginalFilename();
+            fname = file.getOriginalFilename();
 
-            redirectAttributes.addFlashAttribute("message",
-                    extention.displayData(file.getOriginalFilename()));
-            //redirectAttributes.addFlashAttribute("Type", extention.getExtentionByString(file.getOriginalFilename()));
+            redirectAttributes.addFlashAttribute("message", extention.displayData(file.getOriginalFilename()));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,9 +66,14 @@ public class UploadController {
         return "uploadStatus";
     }
 
-    @GetMapping("/data")
-    public String returnData(){
-        return fileName;
+    @RequestMapping(value = "/data", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> getImageAsResponseEntity() {
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+     
+        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers, HttpStatus.OK);
+        return responseEntity;
     }
 
     /*public String getFileName(){

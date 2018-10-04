@@ -31,7 +31,7 @@ public class DetermineExtention {
 		// jpg / jpeg
 		}else if(getExtensionByString(filename).equals("jpg") || getExtensionByString(filename).equals("jpeg")){
 			System.out.println(filename + " : Is recognized as a img extention");
-			return displayImg(filename);
+			return displayImg();
 		// other
 		}else{
 			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
@@ -48,11 +48,11 @@ public class DetermineExtention {
 	}
 
 	private String displayPdf(){
-		return "Will display a pdf.";
+		return "<iframe src=\"data:application/pdf;base64, /data\"></iframe>";
 	}
 
-	private String displayImg(String filename){
-		return " <img src=\"/src/main/resources/temp/"+ filename +"\" alt=\"Smiley face\" height=\"200\" width=\"200\"> ";
+	private String displayImg(){
+		return " <img src=\"/data\" alt=\"Smiley face\" height=\"200\" width=\"200\"> ";
 	}
 
 	private String displayOther(){

@@ -19,7 +19,7 @@ public class TestController{
 	private UploadController test = new UploadController();
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/files/{file_name}", method = RequestMethod.GET)
     public String test(){
     	return""; //extention.displayData(test.getFileName());
     }
