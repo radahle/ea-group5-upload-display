@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <head>
-	<style type="text/css">
+<style type="text/css">
+
+	body{
+		margin: 0;
+	}
+
+	header{
+		background: url(https://www.cadtutor.net/download/raster/sky_02_source/sky-13.jpg) no-repeat center center fixed;
+		background-size: cover;
+
+		height: 20vh;
+		min-height: 20vh;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	h1{
+		color:white;
+		font-size: 300%;
+		text-transform: uppercase;
+		text-shadow: 4px 4px 20px #000;
+		text-align: center;
+		font-family: arial;
+	}
+
+	article{
+		width: 40%;
+		margin: 0 auto;
+		font-size: 18px;
+	}
+
  	pre code {
 	  background-color: #eee;
 	  border: 1px solid #999;
@@ -14,16 +46,23 @@
 	img{
 		width: 50%;
 	}
-	</style>
+</style>
 </head>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-
+<header>
+	
 <div th:if="${message}">
 	<h1 th:utext="${fileName}"/></h1>
-    <p th:utext="${message}"/></p>
 </div>
+</header>
+<article>
+
+<div th:if="${message}">
+    <p th:utext="${message}"/></p>
+</div>    
+</article>    
 
 </body>
 </html>
