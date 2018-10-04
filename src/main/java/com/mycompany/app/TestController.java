@@ -11,19 +11,17 @@ import org.springframework.http.HttpStatus;
 
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/uploafsdvadv")
 public class TestController{
 
 
 	private DetermineExtention extention = new DetermineExtention();
-
+	private UploadController test = new UploadController();
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET)
     public String test(){
-    	return extention.displayData("test.jpg");
+    	return""; //extention.displayData(test.getFileName());
     }
 
 }
-
-
