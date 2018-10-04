@@ -10,6 +10,8 @@ import java.util.Base64;
 
 
 public class DetermineExtention {
+	private String tempFileName;
+
 
     private String getExtensionByString(String filename) {
     	String extension = null;
@@ -20,6 +22,7 @@ public class DetermineExtention {
     }
 
     public String displayData(String filename, byte[] bytes){
+    	tempFileName = filename;
     	String extension = getExtensionByString(filename);
     	// txt
     	if(extension.equals("txt")){
@@ -45,7 +48,7 @@ public class DetermineExtention {
 		// other
 		}else{
 			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
-			return displayOther();
+			return displayOther(bytes);
 	    }
 	}
 
@@ -69,8 +72,26 @@ public class DetermineExtention {
 		return " <img src=" + encoding + " style=\"height: 50%; width: 50%;\"> ";
 	}
 
-	private String displayOther(){
-		return "<p>Other</p>";
+	private String displayOther(byte[] bytes){
+	 File otherFile = null;
+	 try{
+	 	otherFile = new File(tempFileName);
+	 	FileOutputStream fos = new FileOutputStream(otherFile);
+	 	fos.write(bytes);
+	 	fos.flush();
+	 	fos.close();
+	 }
+	 catch(IOException ex){
+	 	System.out.println(ex.toString());
+	 }
+	 String date = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date (otherFile.lastModified()));
+
+		return "<p> <ul> <li>Name of file: "+ otherFile.getName() + "</li>" + 
+		"<li>Classpath: " + otherFile.getAbsolutePath() + "</li>" +
+		"<li>Can it be read: " + otherFile.canRead() + "</li>" +
+		"<li>Last modified date: " + date + "</li>" +
+		"<li>The size of the file: " + otherFile.length()/1000 + "kB</li>" 
+		+ "</ul></p>";
 	}
 
 }
