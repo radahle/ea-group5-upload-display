@@ -4,12 +4,14 @@
      
       <groupId>com.mycompany.app</groupId>
       <artifactId>ea-group5-upload-display</artifactId>
+      <packaging>jar</packaging>
       <version>1.0-SNAPSHOT</version>
       <!-- packaging>jar</packaging -->
      
       <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
       </properties>
      
       <parent>
@@ -46,17 +48,21 @@
       </dependencies>
     <build>
     <plugins>
-     <!-- <plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+     <plugin>
         <groupId>com.heroku.sdk</groupId>
         <artifactId>heroku-maven-plugin</artifactId>
         <version>2.0.6</version>
-        <configuration>
+        <!--<configuration>
           <appName>craig-mavern-heroku</appName>
           <processTypes>
             <web>java $JAVA_OPTS -cp target/classes:target/dependency/* com.mycompany.app.Application</web>
           </processTypes>
-        </configuration>
-      </plugin>-->
+        </configuration> -->
+      </plugin>
     </plugins>
   </build>
 </project>
