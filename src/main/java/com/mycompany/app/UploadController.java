@@ -1,4 +1,4 @@
-package com.mycompany.app;
+ package com.mycompany.app;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +15,10 @@ import java.nio.file.Paths;
 @Controller
 public class UploadController {
 
+    private DetermineExtention extention = new DetermineExtention();
+
+    //String filename = "";
+
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "src/main/resources/temp/";
 
@@ -26,6 +30,9 @@ public class UploadController {
     @PostMapping("/upload") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
+
+
+       // filename = file.toString();
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
@@ -40,7 +47,7 @@ public class UploadController {
             Files.write(path, bytes);
 
             redirectAttributes.addFlashAttribute("message",
-                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
+                    extention.displayData(file.getOriginalFilename()));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,5 +60,9 @@ public class UploadController {
     public String uploadStatus() {
         return "uploadStatus";
     }
+
+    /*public String getFileName(){
+        return filename;
+    }*/
 
 }
