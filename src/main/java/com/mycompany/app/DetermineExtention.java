@@ -20,25 +20,28 @@ public class DetermineExtention {
     }
 
     public String displayData(String filename, byte[] bytes){
+    	String extension = getExtensionByString(filename);
     	// txt
-    	if(getExtensionByString(filename).equals("txt")){
+    	if(extension.equals("txt")){
     		System.out.println(filename + " : Is recognized as txt extention");	
     		return displayTxt();
     	// code
-    	}else if(getExtensionByString(filename).equals("js") || 
-    			getExtensionByString(filename).equals("java") ||
-    			 getExtensionByString(filename).equals("cs") || 
-    			 getExtensionByString(filename).equals("py")){
+    	}else if(extension.equals("js") || 
+    			extension.equals("java") ||
+    			 extension.equals("cs") || 
+    			 extension.equals("py")){
     		System.out.println(filename + " : Is recognized as code extention");
     		return displayCode();
 		// Pdf
-		}else if(getExtensionByString(filename).equals("pdf")){
+		}else if(extension.equals("pdf")){
 			System.out.println(filename + " : Is recognized as a pdf extention");
 			return displayPdf(bytes);
 		// jpg / jpeg
-		}else if(getExtensionByString(filename).equals("jpg") || getExtensionByString(filename).equals("jpeg")){
+		}else if(extension.equals("jpg") || 
+			extension.equals("jpeg") || 
+			extension.equals("png")){
 			System.out.println(filename + " : Is recognized as a img extention");
-			return displayImg(bytes);
+			return displayImg(bytes, extension);
 		// other
 		}else{
 			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
@@ -60,10 +63,10 @@ public class DetermineExtention {
 		return "<iframe src=" + encoding + "></iframe>";
 	}
 
-	private String displayImg(byte[] bytes){
+	private String displayImg(byte[] bytes, String extension){
 		Base64.Encoder encoder = Base64.getEncoder();
-		String encoding = "data:image/jpeg;base64," + encoder.encodeToString(bytes);
-		return " <img src=" + encoding + " > ";
+		String encoding = "data:image/" + extension + ";base64," + encoder.encodeToString(bytes);
+		return " <img src=" + encoding + " style=\"height: 50%; width: 50%;\"> ";
 	}
 
 	private String displayOther(){
