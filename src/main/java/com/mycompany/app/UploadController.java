@@ -48,11 +48,11 @@ public class UploadController {
 
             //Get the file and save it somewhere
             bytes = file.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-            Files.write(path, bytes);
+            //Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            //Files.write(path, bytes);
             fname = file.getOriginalFilename();
 
-            redirectAttributes.addFlashAttribute("message", extention.displayData(file.getOriginalFilename()));
+            redirectAttributes.addFlashAttribute("message", extention.displayData(file.getOriginalFilename(), bytes));
 
         } catch (IOException e) {
             e.printStackTrace();

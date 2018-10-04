@@ -1,6 +1,12 @@
 package com.mycompany.app;
 
+import java.nio.file.Files;
 import java.util.Optional;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.util.Base64;
 
 
 public class DetermineExtention {
@@ -13,13 +19,14 @@ public class DetermineExtention {
 		return extension;
     }
 
-    public String displayData(String filename){
+    public String displayData(String filename, byte[] bytes){
     	// txt
     	if(getExtensionByString(filename).equals("txt")){
     		System.out.println(filename + " : Is recognized as txt extention");	
     		return displayTxt();
     	// code
     	}else if(getExtensionByString(filename).equals("js") || 
+    			getExtensionByString(filename).equals("java") ||
     			 getExtensionByString(filename).equals("cs") || 
     			 getExtensionByString(filename).equals("py")){
     		System.out.println(filename + " : Is recognized as code extention");
@@ -27,11 +34,11 @@ public class DetermineExtention {
 		// Pdf
 		}else if(getExtensionByString(filename).equals("pdf")){
 			System.out.println(filename + " : Is recognized as a pdf extention");
-			return displayPdf();
+			return displayPdf(bytes);
 		// jpg / jpeg
 		}else if(getExtensionByString(filename).equals("jpg") || getExtensionByString(filename).equals("jpeg")){
 			System.out.println(filename + " : Is recognized as a img extention");
-			return displayImg();
+			return displayImg(bytes);
 		// other
 		}else{
 			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
@@ -47,12 +54,16 @@ public class DetermineExtention {
 		return "<pre><code> String code = \"Will display code\"; </code></pre>";
 	}
 
-	private String displayPdf(){
-		return "<iframe src=\"data:application/pdf;base64, /data\"></iframe>";
+	private String displayPdf(byte[] bytes){
+		Base64.Encoder encoder = Base64.getEncoder();
+		String encoding = "data:application/pdf;base64," + encoder.encodeToString(bytes);
+		return "<iframe src=" + encoding + "></iframe>";
 	}
 
-	private String displayImg(){
-		return " <img src=\"/data\" alt=\"Smiley face\" height=\"200\" width=\"200\"> ";
+	private String displayImg(byte[] bytes){
+		Base64.Encoder encoder = Base64.getEncoder();
+		String encoding = "data:image/jpeg;base64," + encoder.encodeToString(bytes);
+		return " <img src=" + encoding + " > ";
 	}
 
 	private String displayOther(){
