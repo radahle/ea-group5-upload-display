@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<style>
+		
+	body{
+		margin: 0;
+	}
+
+	header{
+		background: url(https://www.cadtutor.net/download/raster/sky_02_source/sky-13.jpg) no-repeat center center fixed;
+		background-size: cover;
+
+		height: 60vh;
+		min-height: 60vh;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	h1{
+		color:white;
+		font-size: 300%;
+		text-transform: uppercase;
+		text-shadow: 4px 4px 20px #000;
+		text-align: center;
+		font-family: arial;
+	}
+
+	article{
+		width: 50%;
+		margin: 0 auto;
+		font-size: 18px;
+	}
+
+</style>
+</head>
 <body>
-
-<h1>Spring Boot file upload example</h1>
-
+<header>
+<h1>Upload a file</h1>
+</header>
+<article>
+<h2>Select the file to upload</h2>
+<p>The selected file will be displayed for you after pressing submit.</p>
 <form method="POST" action="/upload" enctype="multipart/form-data">
     <input type="file" name="file" /><br/><br/>
     <input type="submit" value="Submit" />
 </form>
+</article>
 
 </body>
 </html>
