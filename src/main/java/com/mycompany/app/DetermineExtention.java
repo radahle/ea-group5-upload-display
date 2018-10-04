@@ -1,15 +1,6 @@
 package com.mycompany.app;
 
 import java.util.Optional;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpStatus;
-
 
 
 public class DetermineExtention {
@@ -40,7 +31,7 @@ public class DetermineExtention {
 		// jpg / jpeg
 		}else if(getExtensionByString(filename).equals("jpg") || getExtensionByString(filename).equals("jpeg")){
 			System.out.println(filename + " : Is recognized as a img extention");
-			return displayImg();
+			return displayImg(filename);
 		// other
 		}else{
 			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
@@ -60,12 +51,12 @@ public class DetermineExtention {
 		return "Will display a pdf.";
 	}
 
-	private String displayImg(){
-		return " <img src=\"https://tek.vgc.no/2348/2348082/tb8d0cbc.956x538.jpg\" alt=\"Smiley face\" height=\"200\" width=\"200\"> ";
+	private String displayImg(String filename){
+		return " <img src=\"/src/main/resources/temp/"+ filename +"\" alt=\"Smiley face\" height=\"200\" width=\"200\"> ";
 	}
 
 	private String displayOther(){
-		return "Other";
+		return "<p>Other</p>";
 	}
 
 }

@@ -21,6 +21,7 @@ public class UploadController {
 
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "src/main/resources/temp/";
+    private static String fileName = "";
 
     @GetMapping("/")
     public String index() {
@@ -45,9 +46,11 @@ public class UploadController {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
+            fileName = file.getOriginalFilename();
 
             redirectAttributes.addFlashAttribute("message",
                     extention.displayData(file.getOriginalFilename()));
+            //redirectAttributes.addFlashAttribute("Type", extention.getExtentionByString(file.getOriginalFilename()));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,6 +62,11 @@ public class UploadController {
     @GetMapping("/uploadStatus")
     public String uploadStatus() {
         return "uploadStatus";
+    }
+
+    @GetMapping("/data")
+    public String returnData(){
+        return fileName;
     }
 
     /*public String getFileName(){
