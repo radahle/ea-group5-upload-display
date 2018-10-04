@@ -38,7 +38,6 @@ public class UploadController {
 
         try {
             bytes = file.getBytes();
-            fname = file.getOriginalFilename();
 
             redirectAttributes.addFlashAttribute("message", extention.displayData(file.getOriginalFilename(), bytes));
 
@@ -54,7 +53,7 @@ public class UploadController {
         return "uploadStatus";
     }
 
-    @RequestMapping(value = "/data", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/data", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getImageAsResponseEntity() {
         HttpHeaders headers = new HttpHeaders();
 
@@ -62,5 +61,5 @@ public class UploadController {
      
         ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers, HttpStatus.OK);
         return responseEntity;
-    }
+    }*/
 }
