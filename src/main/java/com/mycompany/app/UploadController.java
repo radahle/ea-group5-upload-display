@@ -53,14 +53,4 @@ public class UploadController {
     public String uploadStatus() {
         return "uploadStatus";
     }
-
-    /*@RequestMapping(value = "/data", method = RequestMethod.GET)
-    public ResponseEntity<byte[]> getImageAsResponseEntity() {
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-     
-        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers, HttpStatus.OK);
-        return responseEntity;
-    }*/
 }

@@ -11,6 +11,8 @@ import java.util.Base64;
 
 public class DetermineExtention {
 
+	private String tempFileName;
+
     private String getExtensionByString(String filename) {
     	String extension = null;
 		if(filename.contains(".")){
@@ -20,6 +22,7 @@ public class DetermineExtention {
     }
 
     public String displayData(String filename, byte[] bytes){
+    	tempFileName = filename;
     	String extension = getExtensionByString(filename);
     	// txt
     	if(extension.equals("txt")){
@@ -66,7 +69,25 @@ public class DetermineExtention {
 	private String displayImg(byte[] bytes, String extension){
 		Base64.Encoder encoder = Base64.getEncoder();
 		String encoding = "data:image/" + extension + ";base64," + encoder.encodeToString(bytes);
-		return " <img src=" + encoding + " style=\"height: 50%; width: 50%;\"> ";
+
+		File imgFile = null;
+		BufferedImage image = null;
+		try {
+			imgFile = new File(tempFileName);
+        	FileOutputStream fos = new FileOutputStream(imgFile);
+        	fos.write(bytes);
+        	fos.flush();
+        	fos.close();
+        	image = ImageIO.read(imgFile);
+		} catch(IOException e) {
+			System.out.println(e);
+		}
+
+		return " <img src=" + encoding + " style=\"height: 50%; width: 50%;\"> \n" +
+			"<p>File name: " + tempFileName + "</p>\n" +
+			"<p>File size: " + imgFile.length()/1000 + "kB</p>\n" +
+			"<p>Image height: " + image.getHeight() + " px</p> \n" +
+			"<p>Image width: " + image.getWidth() + " px</p>";
 	}
 
 	private String displayOther(){
