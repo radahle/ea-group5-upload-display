@@ -23,7 +23,7 @@ public class DetermineExtention {
     	// txt
     	if(getExtensionByString(filename).equals("txt")){
     		System.out.println(filename + " : Is recognized as txt extention");	
-    		return displayTxt();
+    		return displayTxt(bytes);
     	// code
     	}else if(getExtensionByString(filename).equals("js") || 
     			getExtensionByString(filename).equals("java") ||
@@ -46,8 +46,8 @@ public class DetermineExtention {
 	    }
 	}
 
-	private String displayTxt(){
-		return "<p>\"/data \"</p>";
+	private String displayTxt(byte[] bytes){
+		return "<p>"+new String(bytes)+"</p>";
 	}
 
 	private String displayCode(){
