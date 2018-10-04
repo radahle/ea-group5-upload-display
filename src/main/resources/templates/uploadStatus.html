@@ -19,10 +19,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<h1>Spring Boot - Upload Status</h1>
 
 <div th:if="${message}">
-    <h2 th:utext="${message}"/></h2>
+	<h1 th:utext="${fileName}"/></h1>
+    <p th:utext="${message}"/></p>
 </div>
+
 </body>
 </html>

@@ -39,6 +39,7 @@ public class UploadController {
         try {
             bytes = file.getBytes();
 
+            redirectAttributes.addFlashAttribute("fileName", file.getOriginalFilename());
             redirectAttributes.addFlashAttribute("message", extention.displayData(file.getOriginalFilename(), bytes));
 
         } catch (IOException e) {
