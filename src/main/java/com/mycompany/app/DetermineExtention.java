@@ -4,7 +4,7 @@ import java.nio.file.Files;
 import java.util.Optional;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.io.IOException;
+//import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.util.Base64;
 
@@ -70,22 +70,18 @@ public class DetermineExtention {
 		Base64.Encoder encoder = Base64.getEncoder();
 		String encoding = "data:image/" + extension + ";base64," + encoder.encodeToString(bytes);
 
-		File imgFile = null;
+		
 		BufferedImage image = null;
 		try {
-			imgFile = new File(tempFileName);
-        	FileOutputStream fos = new FileOutputStream(imgFile);
-        	fos.write(bytes);
-        	fos.flush();
-        	fos.close();
-        	image = ImageIO.read(imgFile);
+			ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+      		image = ImageIO.read(bis);
 		} catch(IOException e) {
 			System.out.println(e);
 		}
 
 		return " <img src=" + encoding + " style=\"height: 50%; width: 50%;\"> \n" +
 			"<p>File name: " + tempFileName + "</p>\n" +
-			"<p>File size: " + imgFile.length()/1000 + "kB</p>\n" +
+			"<p>File size: " + bytes.length/1000 + "kB</p>\n" +
 			"<p>Image height: " + image.getHeight() + " px</p> \n" +
 			"<p>Image width: " + image.getWidth() + " px</p>";
 	}
@@ -93,5 +89,4 @@ public class DetermineExtention {
 	private String displayOther(){
 		return "<p>Other</p>";
 	}
-
 }

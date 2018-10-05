@@ -32,7 +32,7 @@ public class UploadController {
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
         if (file.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+            redirectAttributes.addFlashAttribute("message", "<img src=\"https://i.imgflip.com/2jdd2e.jpg\"/>");
             return "redirect:uploadStatus";
         }
 
