@@ -47,10 +47,10 @@ public class DetermineExtention {
 			extension.equals("png")){
 			System.out.println(filename + " : Is recognized as a img extention");
 			return displayImg(bytes, extension);
-		// other
+		// Error
 		}else if(extension.equals("ERROR")){
 			return displayErrorMessage();
-
+		// other
 		}else{
 			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
 			return displayOther(bytes);
