@@ -17,6 +17,8 @@ public class DetermineExtention {
     	String extension = null;
 		if(filename.contains(".")){
 			extension = filename.substring(filename.lastIndexOf(".") + 1);
+		}else{
+			return "ERROR";
 		}
 		return extension;
     }
@@ -30,7 +32,7 @@ public class DetermineExtention {
     		return displayTxt(bytes);
     	// code
     	}else if(extension.equals("js") || 
-    			extension.equals("java") ||
+    			 extension.equals("java") ||
     			 extension.equals("cs") || 
     			 extension.equals("py")){
     		System.out.println(filename + " : Is recognized as code extention");
@@ -46,6 +48,9 @@ public class DetermineExtention {
 			System.out.println(filename + " : Is recognized as a img extention");
 			return displayImg(bytes, extension);
 		// other
+		}else if(extension.equals("ERROR")){
+			return displayErrorMessage();
+
 		}else{
 			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
 			return displayOther(bytes);
@@ -72,6 +77,12 @@ public class DetermineExtention {
 		return " <img src=" + encoding + " style=\"height: 50%; width: 50%;\"> ";
 	}
 
+	private String displayErrorMessage(){
+		return  "<h2>Error</h2>" + 
+				"<p>The file that was choosen does not have a file ending.</p>" +
+				"<p>Please select anther file to upload.</p>";
+	}
+
 	private String displayOther(byte[] bytes){
 	 File otherFile = null;
 	 try{
@@ -86,12 +97,16 @@ public class DetermineExtention {
 	 }
 	 String date = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date (otherFile.lastModified()));
 
-		return "<p> <ul> <li>Name of file: "+ otherFile.getName() + "</li>" + 
-		"<li>Classpath: " + otherFile.getAbsolutePath() + "</li>" +
-		"<li>Can it be read: " + otherFile.canRead() + "</li>" +
-		"<li>Last modified date: " + date + "</li>" +
-		"<li>The size of the file: " + otherFile.length()/1000 + "kB</li>" 
-		+ "</ul></p>";
+		return  "<h2>Meta Data</h2>" +
+				"<p><ul>" + 
+				"<li>Name of file: "+ otherFile.getName() + "</li>" + 
+	    		"<li>Classpath: " + otherFile.getAbsolutePath() + "</li>" +
+				"<li>Can it be read: " + otherFile.canRead() + "</li>" +
+				"<li>Last modified date: " + date + "</li>" +
+				"<li>The size of the file: " + otherFile.length()/1000 + "kB</li>" + 
+			  	"</ul></p>";
 	}
+
+
 
 }
