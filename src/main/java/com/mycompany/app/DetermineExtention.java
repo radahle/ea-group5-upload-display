@@ -27,31 +27,26 @@ public class DetermineExtention {
     	String extension = getExtensionByString(filename);
     	// txt
     	if(extension.equals("txt")){
-    		System.out.println(filename + " : Is recognized as txt extention");	
     		return displayTxt(bytes);
     	// code
     	}else if(extension.equals("js") || 
     			 extension.equals("java") ||
     			 extension.equals("cs") || 
     			 extension.equals("py")){
-    		System.out.println(filename + " : Is recognized as code extention");
     		return displayCode(bytes);
 		// Pdf
 		}else if(extension.equals("pdf")){
-			System.out.println(filename + " : Is recognized as a pdf extention");
 			return displayPdf(bytes);
 		// jpg / jpeg
 		}else if(extension.equals("jpg") || 
 			extension.equals("jpeg") || 
 			extension.equals("png")){
-			System.out.println(filename + " : Is recognized as a img extention");
 			return displayImg(bytes, extension);
 		// Error
 		}else if(extension.equals("ERROR")){
 			return displayErrorMessage();
-		// other
+		// other --> Display meta data for all other files
 		}else{
-			System.out.println(filename + " : Is recongnized as Other -- Display it with meta data");
 			return displayOther(bytes);
 	    }
 	}
@@ -83,11 +78,11 @@ public class DetermineExtention {
 			System.out.println(e);
 		}
 
-		return " <img src=" + encoding + " style=\"height: 50%; width: 50%;\"> \n" +
-			"<p>File name: " + tempFileName + "</p>\n" +
-			"<p>File size: " + bytes.length/1000 + "kB</p>\n" +
-			"<p>Image height: " + image.getHeight() + " px</p> \n" +
-			"<p>Image width: " + image.getWidth() + " px</p>";
+		return  "<img src=" + encoding + " style=\"height: 50%; width: 50%;\"> \n" +
+				"<p>File name: " + tempFileName + "</p>\n" +
+				"<p>File size: " + bytes.length/1000 + "kB</p>\n" +
+				"<p>Image height: " + image.getHeight() + " px</p> \n" +
+				"<p>Image width: " + image.getWidth() + " px</p>";
 	}
 
 	private String displayErrorMessage(){
@@ -115,7 +110,7 @@ public class DetermineExtention {
 				"<li>Name of file: "+ otherFile.getName() + "</li>" + 
 	    		"<li>Classpath: " + otherFile.getAbsolutePath() + "</li>" +
 				"<li>Can it be read: " + otherFile.canRead() + "</li>" +
-				"<li>Last modified date: " + date + "</li>" +
+				"<li>Last accessed: " + date + "</li>" +
 				"<li>The size of the file: " + otherFile.length()/1000 + "kB</li>" + 
 			  	"</ul></p>";
 	}
