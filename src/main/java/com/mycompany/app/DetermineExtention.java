@@ -12,9 +12,6 @@ import java.util.Base64;
 public class DetermineExtention {
 	private String tempFileName;
 
-
-	private String tempFileName;
-
     private String getExtensionByString(String filename) {
     	String extension = null;
 		if(filename.contains(".")){
